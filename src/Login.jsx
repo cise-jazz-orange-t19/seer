@@ -1,6 +1,8 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import './style.css'
+import Signup from './Signup';
+import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 export default class Login extends React.Component {
     render() {
         const layout = {
@@ -29,6 +31,7 @@ export default class Login extends React.Component {
         }
         return (
             <div className="login">
+                <Router>
                 <Form
                     {...layout}
                     name="basic"
@@ -71,12 +74,15 @@ export default class Login extends React.Component {
                     <Form.Item {...tailLayout}>
                         <Button type="primary" htmlType="submit">
                             Log in
-        </Button>
-        <Button type="primary" htmlType="submit" style={{marginLeft:20}}>
+                        </Button>
+                     <Link to="/signup"> <Button type="primary" htmlType="submit" style={{ marginLeft: 20 }}>
                             Sign up
-        </Button >
+                        </Button >
+                        </Link>  
                     </Form.Item>
                 </Form>
+                <Route path="/Signup" exact component={Signup}></Route>
+                </Router>
             </div>
         )
     }

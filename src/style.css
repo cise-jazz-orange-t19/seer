@@ -7,13 +7,13 @@
 .save{
     float:left;
     position: absolute;
-    left:600px;
+    left:40%;
     top:10px;
 }
 .rate{
     float:left;
     position: absolute;
-    left:780px;
+    left:50%;
     top:10px;
 }
 .user{
@@ -71,5 +71,12 @@
     height: 300px;
     position: absolute;
     left: 35%;
-
+}
+.addInput{
+    width: 300;
+    height: 500;
+    float: left;
+    position: absolute;
+    left:35%;
+    background-color: aqua;
 }
