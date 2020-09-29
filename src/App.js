@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import './style.css';
+import './App.css';
 
 import { HeartTwoTone, TrademarkCircleFilled,UserOutlined} from '@ant-design/icons';
 import { Button,Divider  } from 'antd';

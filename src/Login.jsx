@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
-import './style.css'
+import './App.css'
 import Signup from './Signup';
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 export default class Login extends React.Component {
@@ -78,7 +78,7 @@ export default class Login extends React.Component {
                      <Link to="/signup"> <Button type="primary" htmlType="submit" style={{ marginLeft: 20 }}>
                             Sign up
                         </Button >
-                        </Link>  
+                        </Link>
                     </Form.Item>
                 </Form>
                 <Route path="/Signup" exact component={Signup}></Route>

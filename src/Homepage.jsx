@@ -1,6 +1,6 @@
 import React from 'react';
 import { Input, DatePicker, Space, Cascader, Button } from 'antd';
-import './style.css';
+import './App.css';
 export default class Homepage extends React.Component {
 
     constructor(props)
@@ -8,19 +8,19 @@ export default class Homepage extends React.Component {
         super(props);
         this.state={
         numOfInput: [<Input placeholder="enter a value" style={{ width: 150 }} />,
-        
+
         ],
         }
     }
     addInput=()=>{
         const lists=this.state.numOfInput;
-        
+
        lists.push(<Input placeholder="enter a value" style={{ width: 150 }} />)
-      
+
        this.setState({numOfInput:lists})
-      
-      
-       
+
+
+
     }
     render() {
         const { Search } = Input;
@@ -53,7 +53,7 @@ export default class Homepage extends React.Component {
         function onChange(value) {
             console.log(value);
         }
-        
+
         return (
             <div>
                 <div className="bodyy">
@@ -101,14 +101,14 @@ export default class Homepage extends React.Component {
                             +
                             </Button>
                             </div>
-                            
+
                         </div>
-                        
-                  
+
+
                     </div>
                 </div>
 
-            
+
 
             </div>
         )
