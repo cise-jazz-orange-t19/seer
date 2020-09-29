@@ -10,7 +10,7 @@ import Login from "../Login";
 
 class NavBar extends Component {
     state = {
-        current: 'mail',
+        current: '',
     };
 
     handleClick = e => {
