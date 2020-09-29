@@ -8,7 +8,8 @@ import 'antd/dist/antd.css'
 import Homepage from './Homepage.jsx';
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import Login from './Login';
-export default class App extends React.Component{
+
+class App extends React.Component{
   render(){
     return(
       <div>
@@ -30,3 +31,4 @@ export default class App extends React.Component{
     )
   }
 }
+export default App;
