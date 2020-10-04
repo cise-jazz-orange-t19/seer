@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+  </head>
+  <body>
+	  <h1>hello world</h1>
+   <script>
+	   const { Pool, Client } = require('pg')
+		const pool = new Pool({
+   		 	user: 'postgres',
+    			host: 'localhost',
+   			database: 'test',
+   		        password: '',
+  		        port: 5432,
+		})
+		
+		pool.query('select id from test', (err, ress) => {
+    			console.log(err, ress.rows);
+				ress.send({"info_name":ress.rows});
+			console.log(ress)
+			pool.end()
+	})
+   </script>
+  </body>
+</html>
