@@ -1,8 +1,16 @@
+.navbar-logo-brand {
+    height: 50px;
+    width: 50px;
+    pointer-events: none;
+}
+
 .logo{
     float:left;
     color: green;
     font-size: 30px;
     font-weight: bold;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .save{
     float:left;
@@ -18,8 +26,8 @@
 }
 .user{
     float: right;
-    
-   
+
+
    margin: 10px;
 }
 .divider{
@@ -31,7 +39,7 @@
 .field{
     float:left;
     position: absolute;
-    
+
     margin-top: 10px;
 }
 .operator{
@@ -45,7 +53,7 @@
     position: absolute;
     margin-top: 10px;
     left: 400px;
-    
+
 }
 .bodyy{
 
@@ -73,8 +81,8 @@
     left: 35%;
 }
 .addInput{
-    width: 300;
-    height: 500;
+    width: 300px;
+    height: 500px;
     float: left;
     position: absolute;
     left:35%;
