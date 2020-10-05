@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
-import './style.css'
+import './App.css';
 import Signup from './Signup';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import Item from 'antd/lib/list/Item';

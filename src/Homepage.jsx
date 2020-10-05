@@ -1,6 +1,6 @@
 import React from 'react';
 import { Input, DatePicker, Space, Cascader, Button } from 'antd';
-import './style.css';
+import './App.css';
 export default class Homepage extends React.Component {
 
     constructor(props) {
