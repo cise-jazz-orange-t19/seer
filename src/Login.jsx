@@ -10,12 +10,7 @@ export default class Login extends React.Component {
     constructor() {
         super()
         this.state = {
-            user: [{ name: 'a', psd: 'b' }],
-            inputName: '',
-            inputPsw: '',
-
-            isLogin: false,
-            logg:<h1>successful</h1>,
+           
             
         }
     }

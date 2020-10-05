@@ -6,36 +6,7 @@ export default class Homepage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            numOfInput: [<Input placeholder="enter a value" style={{ width: 150 }} />,
-
-            ],
-            inputValue: '',
-            bookList: [],
-            book: [{
-                article: 'Aniche:er',
-                author: 'Aniche, M F and Testing, MA Gerosa Software and {Verification} and {and} and {2010}',
-                title: 'Most common mistakes in test-driven development practice: Results from an online survey with developers',
-                journal: 'ieeexplore.ieee.org',
-
-            },
-            {
-                article: 'Janzen:2008fx,',
-                author: 'Janzen, D S} and {Saiedian, H',
-                title: 'Does Test-Driven Development Really Improve Software Design Quality?',
-                journal: 'Software, IEEE',
-            },
-            {
-                article: '2019arXiv190712290R',
-                author: 'Romano, Simone and Fucci, Davide and Baldassarre, Maria Teresa and Caivano, Danilo and Scanniello, Giuseppe',
-                title: 'An Empirical Assessment on Affective Reactions of Novice Developers when Applying Test-Driven Development',
-                journal: 'arXiv.org',
-            },
-            {
-                article: '2020arXiv200407524R',
-                author: 'Romano, Simone and Scanniello, Giuseppe and Baldassarre, Maria Teresa and Fucci, Davide and Caivano, Danilo',
-                title: 'Results from a replicated experiment on the affective reactions of novice developers when applying test-driven development',
-                journal: 'arXiv.org',
-            }]
+            
         }
     }
     addInput = () => {
