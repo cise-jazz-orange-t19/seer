@@ -2,16 +2,21 @@ import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import './App.css';
 import Signup from './Signup';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import axios from 'axios';
+import { BrowserRouter as Router, Link, Route, Redirect} from 'react-router-dom';
 import Item from 'antd/lib/list/Item';
+import {  hashHistory } from 'react-router';
+import './config'
+
 export default class Login extends React.Component {
 
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
-           
-            
+            inputName: '',
+            inputPsw: '',
+            islogin: false
         }
     }
 
@@ -19,26 +24,60 @@ export default class Login extends React.Component {
         this.setState({
             inputName: e.target.value,
 
+
         })
+
     }
     changePsd = (e) => {
+
         this.setState({
             inputPsw: e.target.value
         })
+
+    }
+    changelog = () => {
+        this.setState({
+            isLogin: true
+        })
     }
     log = () => {
-        this.state.user.forEach(element => {
-            if(element.name===this.state.inputName&&element.psd===this.state.inputPsw)
-            {
-                this.setState({
-                    isLogin:true
-                })
-            }
-        });
+
+
+        const history = this.props.history;
+        let _this = this
+        axios.post('http://localhost:3001/user', {
+            username: this.state.inputName,
+            password: this.state.inputPsw
+        })
+            .then(function (response) {
+                if (response.data === 'islog') {
+                    _this.setState({
+                        isLogin: true
+                    })
+                    global.constants=_this.state.inputName
+                    
+                    alert('welcome '+global.constants)
+                    return history.push('/');
+                     
+                }
+                else if (response.data === 'admin') {
+                    _this.setState({
+                        isLogin: true
+                    })
+                    return history.push('/admin');
+                }
+
+
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
 
     }
     render() {
-        
+
         const layout = {
             labelCol: {
                 span: 8,
@@ -112,11 +151,13 @@ export default class Login extends React.Component {
                         </Form.Item>
 
                         <Form.Item {...tailLayout}>
+
                             <Button type="primary" htmlType="submit" onClick={this.log}>
                                 Log in
                         </Button>
-                            <Link to="/signup"> <Button type="primary" htmlType="submit" style={{ marginLeft: 20 }}>
-                                Sign up
+                            <Link to="/signup">
+                                <Button type="primary" htmlType="submit" style={{ marginLeft: 20 }}>
+                                    Sign up
                         </Button >
                             </Link>
                         </Form.Item>
@@ -124,9 +165,9 @@ export default class Login extends React.Component {
                     <Route path="/Signup" exact component={Signup}></Route>
                 </Router>
                 <div>
-                login:    {this.state.isLogin?'successful':'fail'}
+                    login:    {this.state.isLogin ? 'successful' : 'fail'}
                 </div>
-                
+
             </div>
         )
     }

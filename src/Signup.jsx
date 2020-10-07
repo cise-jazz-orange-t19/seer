@@ -13,11 +13,58 @@ import {
     AutoComplete,
 } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
+import axios from 'axios';
+import { Redirect,hashHistory } from 'react-router';
 export default class Signup extends React.Component {
+    constructor()
+    {
+        super()
+        this.state={
+            singuser:'',
+            singpsw:'',
+            isRegi:null
+        }
+    }
+    signusername=(e)=>{
+        
+        this.setState({
+            singuser:e.target.value
+        })
+    }
+    signpassword=(e)=>{
+       
+        this.setState({
+            singpsw:e.target.value
+        })
+    }
+    register=()=>{
+        let _this=this
+        const history = this.props.history;
+       
+       axios.post('http://localhost:3001/register',{
+           username:this.state.singuser,
+           password:this.state.singpsw
+       }).then(function (response) {
+        if(response.data==='saved'){
+            _this.setState({
+                isRegi:true
+            })
+            return history.push('/');
+        }else{
+            _this.setState({
+                isRegi:false
+            })
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+       
+    }
     render() {
         const { Option } = Select;
         const AutoCompleteOption = AutoComplete.Option;
-        
+
         const formItemLayout = {
             labelCol: {
                 xs: {
@@ -87,28 +134,18 @@ export default class Signup extends React.Component {
             <div>
                 <Form
                     {...formItemLayout}
-                    form={RegistrationForm.form}
+                   
                     name="register"
-                    onFinish={RegistrationForm.onFinish}
-                    initialValues={{
-                        residence: ['zhejiang', 'hangzhou', 'xihu'],
-                        prefix: '86',
-                    }}
+                   
+                    
                     scrollToFirstError
                 >
                     <Form.Item
                         name="username"
                         label="username"
-                        rules={[
-                            {
-                                type: 'username',
-                                message: 'The input is not valid username!',
-                            },
-                            {
-                                required: true,
-                                message: 'Please input your username!',
-                            },
-                        ]}
+                        value={this.state.singuser}
+                        onChange={this.signusername}
+                        
                     >
                         <Input />
                     </Form.Item>
@@ -116,6 +153,7 @@ export default class Signup extends React.Component {
                     <Form.Item
                         name="password"
                         label="Password"
+                        
                         rules={[
                             {
                                 required: true,
@@ -131,6 +169,8 @@ export default class Signup extends React.Component {
                         name="confirm"
                         label="Confirm Password"
                         dependencies={['password']}
+                        value={this.state.singpsw}
+                        onChange={this.signpassword}
                         hasFeedback
                         rules={[
                             {
@@ -166,12 +206,12 @@ export default class Signup extends React.Component {
                         </Checkbox>
                     </Form.Item>
                     <Form.Item {...tailFormItemLayout}>
-                        <Button type="primary" htmlType="submit">
+                        <Button type="primary" htmlType="submit" onClick={this.register}>
                             Register
-        </Button>
+                         </Button>
                     </Form.Item>
                 </Form>
-
+               
 
             </div>
         )

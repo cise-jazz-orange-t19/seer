@@ -1,52 +1,76 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
-import {Menu} from "antd";
-import {BrowserRouter as Router, Link, Route} from "react-router-dom";
+import { Menu } from "antd";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import logo from "../logo.svg";
-import {HeartOutlined, StarOutlined, UserOutlined} from "@ant-design/icons";
-
+import { HeartOutlined, StarOutlined, UserOutlined } from "@ant-design/icons";
+import { withRouter } from "react-router-dom";
 import Homepage from "../Homepage"
 import Login from "../Login";
-
+import Admin from './admin'
+import Add from './add'
 class NavBar extends Component {
-    state = {
-        current: '',
-    };
+    constructor(props) {
+        super(props)
+        this.state = {
+            current: '',
+            user: 'user'
+        };
 
+    }
+    
     handleClick = e => {
-        console.log('click ', e);
-        this.setState({current: e.key});
-    };
+       
+        this.setState({ 
+            current: e.key,
+            
+        });
+        
 
+    };
+ 
     render() {
-        const {current} = this.state;
+        withRouter(NavBar)
+        const { current } = this.state;
         return (
-            <Router>
-                <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal">
+            <Router >
+                <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal" >
                     <Link to="/">
-                        <div className="logo"><img src={logo} className="navbar-logo-brand" alt="logo"/>SEER</div>
+                        <div className="logo"><img src={logo} className="navbar-logo-brand" alt="logo" />SEER</div>
                     </Link>
-                    <Menu.Item key="save" icon={<HeartOutlined/>}>
-                        <Link to="/save"/>
+                    <Menu.Item key="save" icon={<HeartOutlined />}>
+                        <Link to="/save" />
                         My Saved Searches
                     </Menu.Item>
-                    <Menu.Item key="rate" icon={<StarOutlined/>}>
-                        <Link to="/rate"/>
+                    <Menu.Item key="rate" icon={<StarOutlined />}>
+                        <Link to="/rate" />
                         My Ratings
                     </Menu.Item>
 
-                    <Menu.Item key="user" icon={<UserOutlined/>}>
-                        <Link to="/login"/>
-                        User
+                    <Menu.Item key="user" icon={<UserOutlined />}  >
+                        <Link to="/login" /> 
+                        
+                            {'welcome:  '+global.constants}                       
                     </Menu.Item>
+
+                    <Menu.Item key="admin" icon={<UserOutlined />} style={{display:'none'}} >
+                        <Link to="/admin" />              
+                    </Menu.Item>
+                    <Menu.Item key="add" icon={<UserOutlined />} style={{display:'none'}} >
+                        <Link to="/add" />              
+                    </Menu.Item>
+                    
                 </Menu>
 
-                <Route path="/" exact component={Homepage}/>
+                <Route path="/" exact component={Homepage} />
                 {
-                    /* <Route path="/login" exact component={Save}></Route>
+                    /* <Route path="/login" exact component={Save}></Route> https://reactrouter.com/web/api/history
                     <Route path="/save" exact component={Rate}></Route> */
                 }
-                <Route path="/Login" exact component={Login}/>
+                <Route path="/login" exact component={Login}  />
+                <Route path="/admin" exact component={Admin} />
+                <Route path="/add" exact component={Add} />
+                
 
             </Router>
         );
