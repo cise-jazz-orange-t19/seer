@@ -2,6 +2,7 @@
     height: 50px;
     width: 50px;
     pointer-events: none;
+    position: absolute;
 }
 
 .logo{
